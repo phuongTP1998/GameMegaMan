@@ -1,7 +1,10 @@
 package userInterface;
 
+import effect.CacheDataLoader;
+
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 /**
  * Created by trongphuong1011 on 10/14/2017.
@@ -18,6 +21,12 @@ public class GameFrame extends JFrame {
         this.setBounds((dimension.width - SCREEN_WIDTH) / 2, (dimension.height - SCREEN_HEIGHT) / 2
                 , SCREEN_WIDTH, SCREEN_HEIGHT);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        try {
+            CacheDataLoader.getInstance().LoadData();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         gamePanel = new GamePanel();
         add(gamePanel);

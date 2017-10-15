@@ -15,6 +15,11 @@ public class FrameImage {
         this.image = image;
     }
 
+    public FrameImage(){
+        image = null;
+        name = null;
+    }
+
     public FrameImage(FrameImage frameImage){
         image = new BufferedImage(frameImage.getImageWidth()
                 ,frameImage.getImageHeight()
