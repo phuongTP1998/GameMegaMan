@@ -21,11 +21,16 @@ public class GameFrame extends JFrame {
 
         gamePanel = new GamePanel();
         add(gamePanel);
+        this.addKeyListener(gamePanel);
+    }
+
+    public void startGame(){
         gamePanel.startGame();
     }
 
     public static void main(String args[]) {
         GameFrame gameFrame = new GameFrame();
         gameFrame.setVisible(true);
+        gameFrame.startGame();
     }
 }
