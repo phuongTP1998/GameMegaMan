@@ -1,6 +1,7 @@
 package userInterface;
 
 import effect.CacheDataLoader;
+import effect.FrameImage;
 
 import javax.swing.*;
 import java.awt.*;
