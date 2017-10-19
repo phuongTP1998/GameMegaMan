@@ -31,7 +31,11 @@ public class MegaMan {
 
     public void update() {
         setPosX(getPosX() + speedX);
-
+        if (getPosY() >= 400) setPosY(400);
+        else {
+            setPosY(getPosY() + speedY);
+            setSpeedY(getSpeedY() + mass);
+        }
     }
 
     public void draw(Graphics2D g2) {

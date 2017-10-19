@@ -11,12 +11,12 @@ public class InputManager {
 
     private GamePanel gamePanel;
 
-    public InputManager(GamePanel gamePanel){
+    public InputManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
     }
 
-    public void processKeyPressed(int keyCode){
-        switch (keyCode){
+    public void processKeyPressed(int keyCode) {
+        switch (keyCode) {
             case KeyEvent.VK_UP:
 
                 break;
@@ -29,8 +29,9 @@ public class InputManager {
             case KeyEvent.VK_RIGHT:
                 gamePanel.megaman.setSpeedX(5);
                 break;
-            case KeyEvent.VK_ENTER:
-
+            case KeyEvent.VK_SPACE:
+                gamePanel.megaman.setSpeedY(-3);
+                gamePanel.megaman.setPosY(gamePanel.megaman.getPosY() - 6);
                 break;
             case KeyEvent.VK_A:
 
@@ -38,8 +39,8 @@ public class InputManager {
         }
     }
 
-    public void processKeyReleased(int keyCode){
-        switch (keyCode){
+    public void processKeyReleased(int keyCode) {
+        switch (keyCode) {
             case KeyEvent.VK_UP:
 
                 break;
@@ -54,7 +55,7 @@ public class InputManager {
                 gamePanel.megaman.setDirection(MegaMan.DIR_RIGHT);
                 gamePanel.megaman.setSpeedX(0);
                 break;
-            case KeyEvent.VK_ENTER:
+            case KeyEvent.VK_SPACE:
 
                 break;
             case KeyEvent.VK_A:

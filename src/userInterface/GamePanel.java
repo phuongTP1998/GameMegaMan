@@ -4,6 +4,7 @@ import effect.Animation;
 import effect.CacheDataLoader;
 import effect.FrameImage;
 import gameobject.MegaMan;
+import gameobject.PhysicalMap;
 import jdk.internal.util.xml.impl.Input;
 
 import javax.imageio.ImageIO;
@@ -27,6 +28,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     private Graphics2D bufG2D;
 
     MegaMan megaman = new MegaMan(300,300,100,100,0.1f);
+    PhysicalMap physicalMap = new PhysicalMap(0,0);
 
     public GamePanel() {
         inputManager = new InputManager(this);
@@ -55,7 +57,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
             bufG2D.fillRect(0, 0, GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT);
 
             //draw game here
-            megaman.draw(bufG2D);
+//            megaman.draw(bufG2D);
+            physicalMap.draw(bufG2D);
         }
     }
 
