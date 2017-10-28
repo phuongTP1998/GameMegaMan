@@ -1,6 +1,7 @@
 package userInterface;
 
-import gameobject.MegaMan;
+import gameobject.GameWorld;
+import gameobject.Megaman;
 
 import java.awt.event.KeyEvent;
 
@@ -8,11 +9,10 @@ import java.awt.event.KeyEvent;
  * Created by trongphuong1011 on 10/15/2017.
  */
 public class InputManager {
+    private GameWorld gameWorld;
 
-    private GamePanel gamePanel;
-
-    public InputManager(GamePanel gamePanel) {
-        this.gamePanel = gamePanel;
+    public InputManager(GameWorld gameWorld) {
+        this.gameWorld = gameWorld;
     }
 
     public void processKeyPressed(int keyCode) {
@@ -24,14 +24,13 @@ public class InputManager {
 
                 break;
             case KeyEvent.VK_LEFT:
-                gamePanel.megaman.setSpeedX(-5);
+                gameWorld.megaman.setSpeedX(-5);
                 break;
             case KeyEvent.VK_RIGHT:
-                gamePanel.megaman.setSpeedX(5);
+                gameWorld.megaman.setSpeedX(5);
                 break;
             case KeyEvent.VK_SPACE:
-                gamePanel.megaman.setSpeedY(-3);
-                gamePanel.megaman.setPosY(gamePanel.megaman.getPosY() - 6);
+                gameWorld.megaman.jump();
                 break;
             case KeyEvent.VK_A:
 
@@ -48,12 +47,12 @@ public class InputManager {
 
                 break;
             case KeyEvent.VK_LEFT:
-                gamePanel.megaman.setDirection(MegaMan.DIR_LEFT);
-                gamePanel.megaman.setSpeedX(0);
+                gameWorld.megaman.setDirection(gameWorld.megaman.LEFT_DIR);
+                gameWorld.megaman.setSpeedX(0);
                 break;
             case KeyEvent.VK_RIGHT:
-                gamePanel.megaman.setDirection(MegaMan.DIR_RIGHT);
-                gamePanel.megaman.setSpeedX(0);
+                gameWorld.megaman.setDirection(gameWorld.megaman.RIGHT_DIR);
+                gameWorld.megaman.setSpeedX(0);
                 break;
             case KeyEvent.VK_SPACE:
 

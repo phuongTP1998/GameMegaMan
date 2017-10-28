@@ -1,20 +1,12 @@
 package userInterface;
 
-import effect.Animation;
-import effect.CacheDataLoader;
-import effect.FrameImage;
-import gameobject.MegaMan;
-import gameobject.PhysicalMap;
-import jdk.internal.util.xml.impl.Input;
+import gameobject.GameWorld;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by trongphuong1011 on 10/14/2017.
@@ -26,23 +18,22 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
     private BufferedImage bufImage;
     private Graphics2D bufG2D;
+    GameWorld gameWorld;
 
-    MegaMan megaman = new MegaMan(300,300,100,100,0.1f);
-    PhysicalMap physicalMap = new PhysicalMap(0,0);
 
     public GamePanel() {
-        inputManager = new InputManager(this);
-
+        gameWorld = new GameWorld();
+        inputManager = new InputManager(gameWorld);
         bufImage = new BufferedImage(GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT, BufferedImage.TYPE_INT_ARGB);
     }
 
     @Override
     public void paint(Graphics g) {
-        g.drawImage(bufImage,0,0,this);
+        g.drawImage(bufImage, 0, 0, this);
     }
 
-    public void UpdateGame(){
-        megaman.update();
+    public void UpdateGame() {
+        gameWorld.Update();
     }
 
     public void RenderGame() {
@@ -52,13 +43,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         if (bufImage != null) {
             bufG2D = (Graphics2D) bufImage.getGraphics();
         }
-        if (bufG2D != null){
+        if (bufG2D != null) {
             bufG2D.setColor(Color.WHITE);
             bufG2D.fillRect(0, 0, GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT);
 
-            //draw game here
-//            megaman.draw(bufG2D);
-            physicalMap.draw(bufG2D);
+            gameWorld.Render(bufG2D);
         }
     }
 
